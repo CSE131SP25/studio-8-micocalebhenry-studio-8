@@ -3,7 +3,7 @@ package studio8;
 import support.cse131.NotYetImplementedException;
 
 public class MultipleChoiceQuestion extends Question {
-
+	private String[] choices;
 	/**
 	 * Constructor
 	 * @param prompt
@@ -15,15 +15,20 @@ public class MultipleChoiceQuestion extends Question {
 		// Call the super class constructor, then create and set
 		// instance variables for any values that aren't handled
 		// by the base class
-		throw new NotYetImplementedException();
+		super(prompt, answer, points);
+		this.choices = choices;
 	}
 	
 	/**
 	 * Display the prompt for the question in addition to 
 	 * the choices present for the question.
 	 */
+	
 	public void displayPrompt() {
-		throw new NotYetImplementedException();
+		super.displayPrompt();
+		for (int i=0; i<choices.length; i++) {
+			System.out.println((i+1)+ ". " + choices[i]);
+		}	
 	}
 	
 	/**
@@ -31,11 +36,20 @@ public class MultipleChoiceQuestion extends Question {
 	 * @return String[] of choices
 	 */
 	public String[] getChoices() {
-		throw new NotYetImplementedException();
+		return choices;
 	}
 	
 	public static void main(String[] args) {
-		// TODO: create your own MultipleChoiceQuestion
+		String[] options =  new String[4];
+		options[0] = "blue";
+		options[1] = "green";
+		options[2] = "neon red";
+		options[3] = "pink";
+		
+		MultipleChoiceQuestion mcq = new MultipleChoiceQuestion("What color is the sky?", "blue", 3, options);
+		mcq.displayPrompt();
+		Question q = new Question("What color is the sky?", "blue", 3);
+		q.displayPrompt();
 	}
 
 }

@@ -3,7 +3,9 @@ package studio8;
 import support.cse131.NotYetImplementedException;
 
 public class Question {
-	
+	private String prompt;
+	private String answer;
+	private int points;
 	/**
 	 * Constructor
 	 * @param prompt
@@ -11,7 +13,9 @@ public class Question {
 	 * @param points
 	 */
 	public Question(String prompt, String answer, int points) {
-		throw new NotYetImplementedException();
+		this.prompt=prompt;
+		this.answer=answer;
+		this.points=points;
 	}
 	
 	/**
@@ -28,7 +32,7 @@ public class Question {
 	 * @return the number of points earned by the givenAnswer
 	 */
 	public int checkAnswer(String givenAnswer) {
-		if(answer.equals(givenAnswer)) { //String comparison
+		if(answer.equalsIgnoreCase(givenAnswer)) { //String comparison
 			return this.points;
 		} else {
 			return 0;
@@ -40,18 +44,20 @@ public class Question {
 	 * @return int points
 	 */
 	public int getPoints() {
-		throw new NotYetImplementedException();
+		return points;
 	}
-	
+	public String getPrompt() {
+		return prompt;
+	}
 	/**
 	 * Getter method for the answer to the question
 	 * @return String answer
 	 */
 	public String getAnswer() {
-		throw new NotYetImplementedException();
+		return answer;
 	}
 	
 	public static void main(String[] args) {
-		// TODO: Create a Question object of your own!
+		Question q = new Question("What color is the sky?", "blue", 3);
 	}
 }
